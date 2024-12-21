@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { Link } from 'expo-router';
 import { styles } from '../styles/styles'
 import { useDispatch, useSelector } from "react-redux";
@@ -8,24 +8,23 @@ export default function Index() {
   const dispatch = useDispatch();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Pressable onPress={()=>dispatch(fetchData())}>
-        <Text style={styles.menuOption}>
-          Загрузить данные
-        </Text>
-      </Pressable>
-      <Link href="/game" style={styles.menuOption}>
-        Новая игра
-      </Link>
-      <Link href="/game" style={styles.menuOption}>
-        Продолжить
-      </Link>
-    </View>
+
+    <ImageBackground
+          source={require("../assets/image.jpg")} 
+          style={styles.backgroundImage}>
+    <View style={styles.menuContainer}>
+              <TouchableOpacity 
+              style={styles.menuButton}
+              onPress={()=>dispatch(fetchData())}>
+                <Text style={styles.choiceText}>Загрузить данные</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuButton}>
+                <Link href="/game" style={styles.choiceText}>Новая игра</Link>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuButton}>
+                <Link href="/game" style={styles.choiceText}>Продолжить</Link>
+              </TouchableOpacity>
+      </View>
+      </ImageBackground>
   );
 }
