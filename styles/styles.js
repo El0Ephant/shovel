@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
   },
+
   backgroundImage: {
     ...StyleSheet.absoluteFillObject,
     width: "100%",
